@@ -1,6 +1,7 @@
 package com.example.valorantagents.domain.use_case.get_agents
 
 import com.example.valorantagents.common.Resource
+import com.example.valorantagents.data.remote.dto.Data
 import com.example.valorantagents.data.remote.dto.toAgents
 import com.example.valorantagents.domain.model.Agents
 import com.example.valorantagents.domain.repository.ValorantRepository
@@ -16,7 +17,8 @@ class GetAgentsUseCase @Inject constructor(
     operator fun invoke(): Flow<Resource<List<Agents>>> = flow {
         try {
             emit(Resource.Loading<List<Agents>>())
-            val agents = repository.getAllAgents().data
+            val agents: MutableList<Data> = mutableListOf()
+            agents.addAll(repository.getAllAgents().data.filter { it.background != null })
             emit(Resource.Success<List<Agents>>(agents.map { it.toAgents() }))
         } catch (e: HttpException) {
             emit(Resource.Error<List<Agents>>(e.localizedMessage ?: "An unexpected error occured"))

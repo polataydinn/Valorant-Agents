@@ -10,7 +10,7 @@ data class Data(
     @SerializedName("assetPath")
     val assetPath: String,
     @SerializedName("background")
-    val background: String,
+    val background: String?,
     @SerializedName("bustPortrait")
     val bustPortrait: String,
     @SerializedName("characterTags")
@@ -49,8 +49,9 @@ fun Data.toAgents(): Agents{
     return Agents(
         uuid = uuid,
         displayName = displayName,
-        description = description,
-        displayIcon = displayIcon,
-        characterTags = characterTags
+        role = role.displayName,
+        fullPortrait = fullPortrait,
+        background = background,
+        agentRoleIcon = role.displayIcon
     )
 }

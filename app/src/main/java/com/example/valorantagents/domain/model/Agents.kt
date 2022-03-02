@@ -5,7 +5,8 @@ import java.util.*
 data class Agents(
     val uuid: String,
     val displayName: String,
-    val description: String,
-    val displayIcon: String,
-    val characterTags: List<String>?
+    val role: String?,
+    val fullPortrait: String,
+    val background: String?,
+    val agentRoleIcon: String
 )

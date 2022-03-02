@@ -11,7 +11,7 @@ data class Role(
     @SerializedName("displayIcon")
     val displayIcon: String,
     @SerializedName("displayName")
-    val displayName: String,
+    val displayName: String?,
     @SerializedName("uuid")
     val uuid: String
 )
