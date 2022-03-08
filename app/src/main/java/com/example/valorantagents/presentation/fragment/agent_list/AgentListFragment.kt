@@ -3,6 +3,7 @@ package com.example.valorantagents.presentation.fragment.agent_list
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
@@ -28,11 +29,13 @@ class AgentListFragment : BindingFragment<FragmentAgentListBinding>() {
             viewModel.state.collect { agentListState ->
                 if (!agentListState.agents.isNullOrEmpty()) {
                     adaper.setList(agentListState.agents.shuffled())
+                    binding.agentListRecyclerView.visibility = View.VISIBLE
                     binding.agentListRecyclerView.adapter = adaper
                 }
                 if (agentListState.error != "") {
-                    print("breakpoint")
+                    binding.agentListErrorText.text = agentListState.error
                 }
+                binding.agentListProgressBar.isVisible = agentListState.isLoading ?: false
             }
         }
     }
