@@ -1,7 +1,5 @@
 # Valorant-Agents
 
-<h1 align="center">Valorant</h1>
-
 <p align="center">
 Valorant is a small demo application with mvvm architecture in accordance with the concept of separation of concerns.
 </p>
