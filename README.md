@@ -14,6 +14,7 @@ Valorant is a small demo application with mvvm architecture in accordance with t
 - Use Case
 - State Handle
 - Depency Injection (Dagger - Hilt)
+- [Splash Api](https://developer.android.com/guide/topics/ui/splash-screen)
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs network data.
 - [Glide](https://github.com/bumptech/glide)
 - Jetpack
