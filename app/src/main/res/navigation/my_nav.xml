@@ -22,5 +22,8 @@
         <action
             android:id="@+id/action_agentDetailFragment_to_agentListFragment"
             app:destination="@id/agentListFragment" />
+        <argument
+            android:name="agentId"
+            app:argType="com.example.valorantagents.domain.model.Agents" />
     </fragment>
 </navigation>

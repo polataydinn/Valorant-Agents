@@ -52,6 +52,9 @@ fun Data.toAgents(): Agents{
         role = role.displayName,
         fullPortrait = fullPortrait,
         background = background,
-        agentRoleIcon = role.displayIcon
+        agentRoleIcon = role.displayIcon,
+        abilities = abilities,
+        bustPortrait = bustPortrait,
+        description = description
     )
 }

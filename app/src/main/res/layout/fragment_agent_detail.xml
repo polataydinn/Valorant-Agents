@@ -20,6 +20,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/detail_image_full_portrait"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingEnd="128dp"
@@ -27,11 +28,13 @@
                 android:src="@drawable/fullportrait" />
 
             <ImageView
+                android:id="@+id/detail_transparent_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/transparent_radical_red" />
 
             <ImageView
+                android:id="@+id/detail_image_bust_portrait"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingStart="128dp"
@@ -39,6 +42,7 @@
                 android:src="@drawable/bustportrait" />
 
             <TextView
+                android:id="@+id/detail_agent_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
@@ -49,6 +53,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/detail_agent_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|start"
@@ -104,6 +109,7 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_agent_biography_text" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ability_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

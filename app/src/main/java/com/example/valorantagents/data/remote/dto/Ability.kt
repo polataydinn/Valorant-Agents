@@ -7,7 +7,7 @@ data class Ability(
     @SerializedName("description")
     val description: String,
     @SerializedName("displayIcon")
-    val displayIcon: String,
+    val displayIcon: String?,
     @SerializedName("displayName")
     val displayName: String,
     @SerializedName("slot")

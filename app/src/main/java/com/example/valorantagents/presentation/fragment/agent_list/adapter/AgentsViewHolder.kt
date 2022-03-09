@@ -19,10 +19,9 @@ import com.example.valorantagents.domain.model.Agents
 
 class AgentsViewHolder(private val binding: CustomAgentItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(agents: Agents, onItemClick: ((Agents) -> Unit)?) {
-
+    fun bind(agent: Agents, onItemClick: ((Agents) -> Unit)?) {
         Glide.with(binding.root)
-            .load(agents.fullPortrait)
+            .load(agent.fullPortrait)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
@@ -65,17 +64,21 @@ class AgentsViewHolder(private val binding: CustomAgentItemBinding) :
             .into(binding.agentPortrait)
 
         Glide.with(binding.root)
-            .load(agents.background)
+            .load(agent.background)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.agentBackground)
 
         Glide.with(binding.root)
-            .load(agents.agentRoleIcon)
+            .load(agent.agentRoleIcon)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.agentIcon)
 
-        binding.agentName.text = agents.displayName
-        binding.agentRole.text = agents.role
+        binding.agentName.text = agent.displayName
+        binding.agentRole.text = agent.role
+
+        binding.root.setOnClickListener {
+            onItemClick?.invoke(agent)
+        }
     }
 
 }

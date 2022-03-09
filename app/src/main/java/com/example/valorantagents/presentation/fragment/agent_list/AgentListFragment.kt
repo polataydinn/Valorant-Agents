@@ -6,8 +6,10 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.example.valorantagents.databinding.FragmentAgentListBinding
+import com.example.valorantagents.domain.model.Agents
 import com.example.valorantagents.presentation.bindingadapter.BindingFragment
 import com.example.valorantagents.presentation.fragment.agent_list.adapter.AgentsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +27,22 @@ class AgentListFragment : BindingFragment<FragmentAgentListBinding>() {
         super.onViewCreated(view, savedInstanceState)
         adaper = AgentsAdapter()
 
+        adaper.onItemClick = { agent ->
+            navigateDetailFragment(agent)
+        }
+
+        getAgents()
+    }
+
+    private fun navigateDetailFragment(agent: Agents) {
+        findNavController().navigate(
+            AgentListFragmentDirections.actionAgentListFragmentToAgentDetailFragment(
+                agent
+            )
+        )
+    }
+
+    private fun getAgents() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { agentListState ->
                 if (!agentListState.agents.isNullOrEmpty()) {
