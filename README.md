@@ -23,3 +23,8 @@ Valorant is a small demo application with mvvm architecture in accordance with t
  - Architecture
   -  MVVM Architecture
   -  Repository pattern
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
