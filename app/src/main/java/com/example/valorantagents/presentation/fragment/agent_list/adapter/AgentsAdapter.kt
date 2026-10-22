@@ -2,13 +2,14 @@ package com.example.valorantagents.presentation.fragment.agent_list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.valorantagents.databinding.CustomAgentItemBinding
 import com.example.valorantagents.domain.model.Agents
 
-class AgentsAdapter: RecyclerView.Adapter<AgentsViewHolder>() {
-    private var agentsList = emptyList<Agents>()
-    var onItemClick: ((Agents) -> Unit)? = null
+class AgentsAdapter(
+    private val onItemClick: (Agents) -> Unit
+) : ListAdapter<Agents, AgentsViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AgentsViewHolder {
         val binding = CustomAgentItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -16,12 +17,11 @@ class AgentsAdapter: RecyclerView.Adapter<AgentsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AgentsViewHolder, position: Int) {
-        holder.bind(agentsList[position], onItemClick)
+        holder.bind(getItem(position), onItemClick)
     }
 
-    override fun getItemCount() = agentsList.size
-
-    fun setList(agentsList: List<Agents>){
-        this.agentsList = agentsList
+    private object DiffCallback : DiffUtil.ItemCallback<Agents>() {
+        override fun areItemsTheSame(oldItem: Agents, newItem: Agents) = oldItem.uuid == newItem.uuid
+        override fun areContentsTheSame(oldItem: Agents, newItem: Agents) = oldItem == newItem
     }
 }

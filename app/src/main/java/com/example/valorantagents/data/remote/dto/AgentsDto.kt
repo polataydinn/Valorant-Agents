@@ -1,7 +1,6 @@
 package com.example.valorantagents.data.remote.dto
 
 
-import com.example.valorantagents.domain.model.Agents
 import com.google.gson.annotations.SerializedName
 
 data class AgentsDto(
@@ -10,4 +9,3 @@ data class AgentsDto(
     @SerializedName("status")
     val status: Int
 )
-

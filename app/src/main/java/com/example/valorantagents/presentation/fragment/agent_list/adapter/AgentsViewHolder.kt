@@ -19,7 +19,7 @@ import com.example.valorantagents.domain.model.Agents
 
 class AgentsViewHolder(private val binding: CustomAgentItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(agent: Agents, onItemClick: ((Agents) -> Unit)?) {
+    fun bind(agent: Agents, onItemClick: (Agents) -> Unit) {
         Glide.with(binding.root)
             .load(agent.fullPortrait)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -54,7 +54,7 @@ class AgentsViewHolder(private val binding: CustomAgentItemBinding) :
                                     )
                                 )
                                 gd.cornerRadius = 35f
-                                binding.agentBackground.setBackgroundDrawable(gd)
+                                binding.agentBackground.background = gd
                             }
                     }
                     return false
@@ -77,7 +77,7 @@ class AgentsViewHolder(private val binding: CustomAgentItemBinding) :
         binding.agentRole.text = agent.role
 
         binding.root.setOnClickListener {
-            onItemClick?.invoke(agent)
+            onItemClick(agent)
         }
     }
 

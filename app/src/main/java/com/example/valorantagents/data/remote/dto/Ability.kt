@@ -13,3 +13,10 @@ data class Ability(
     @SerializedName("slot")
     val slot: String
 )
+fun Ability.toAbility(): com.example.valorantagents.domain.model.Ability {
+    return com.example.valorantagents.domain.model.Ability(
+        displayName = displayName,
+        description = description,
+        displayIcon = displayIcon
+    )
+}

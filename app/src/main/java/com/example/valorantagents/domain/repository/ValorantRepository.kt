@@ -1,8 +1,8 @@
 package com.example.valorantagents.domain.repository
 
-import com.example.valorantagents.data.remote.dto.AgentsDto
+import com.example.valorantagents.domain.model.Agents
 
 interface ValorantRepository {
 
-    suspend fun getAllAgents(): AgentsDto
+    suspend fun getPlayableAgents(): List<Agents>
 }

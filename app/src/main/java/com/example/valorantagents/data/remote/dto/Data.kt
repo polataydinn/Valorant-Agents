@@ -38,22 +38,22 @@ data class Data(
     @SerializedName("killfeedPortrait")
     val killfeedPortrait: String,
     @SerializedName("role")
-    val role: Role,
+    val role: Role?,
     @SerializedName("uuid")
     val uuid: String,
     @SerializedName("voiceLine")
     val voiceLine: VoiceLine
 )
 
-fun Data.toAgents(): Agents{
+fun Data.toAgents(): Agents {
     return Agents(
         uuid = uuid,
         displayName = displayName,
-        role = role.displayName,
+        role = role?.displayName,
         fullPortrait = fullPortrait,
         background = background,
-        agentRoleIcon = role.displayIcon,
-        abilities = abilities,
+        agentRoleIcon = role?.displayIcon,
+        abilities = abilities.map { it.toAbility() },
         bustPortrait = bustPortrait,
         description = description
     )

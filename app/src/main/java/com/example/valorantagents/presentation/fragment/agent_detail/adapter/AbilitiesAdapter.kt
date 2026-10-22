@@ -2,12 +2,12 @@ package com.example.valorantagents.presentation.fragment.agent_detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.example.valorantagents.data.remote.dto.Ability
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.valorantagents.databinding.CustomAbilityItemBinding
+import com.example.valorantagents.domain.model.Ability
 
-class AbilitiesAdapter : RecyclerView.Adapter<AbilitiesViewHolder>() {
-    private var abilities = emptyList<Ability>()
+class AbilitiesAdapter : ListAdapter<Ability, AbilitiesViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AbilitiesViewHolder {
         val binding =
@@ -16,12 +16,12 @@ class AbilitiesAdapter : RecyclerView.Adapter<AbilitiesViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AbilitiesViewHolder, position: Int) {
-        holder.bind(abilities[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount() = abilities.size
-
-    fun setList(abilities: List<Ability>) {
-        this.abilities = abilities
+    private object DiffCallback : DiffUtil.ItemCallback<Ability>() {
+        override fun areItemsTheSame(oldItem: Ability, newItem: Ability) =
+            oldItem.displayName == newItem.displayName
+        override fun areContentsTheSame(oldItem: Ability, newItem: Ability) = oldItem == newItem
     }
 }
